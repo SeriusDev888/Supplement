@@ -79,7 +79,6 @@ const assert = require('node:assert/strict');
     await page.selectOption('#pd-edit-stockStatus', 'in_stock');
     await fill('pd-edit-rating', '4.8');
     await fill('pd-edit-reviewCount', '128');
-    await fill('pd-edit-priceNote', '(฿63.39/serving)');
     await section('รูปแกลเลอรี');
     await page.locator('[data-add-row="gallery"]').click();
     await fill('pd-gallery-0-url', '/assets/ingredients-oranges-v4.png');
@@ -166,10 +165,10 @@ const assert = require('node:assert/strict');
       await live.locator('.pd-main-photo img').getAttribute('src'),
       /ingredients-oranges/,
     );
-    await live.locator('[data-pd-quantity="1"]').click();
-    assert.equal(await live.locator('#pd-quantity').inputValue(), '2');
+    assert.equal(await live.locator('.pd-quantity, #pd-quantity').count(), 0);
+    assert.equal(await live.locator('.pd-pricing > span').count(), 0);
     await live.locator('[data-pd-order]').click();
-    assert.match(await live.locator('#dialog-content').innerText(), /จำนวน 2 ชิ้น/);
+    assert.match(await live.locator('#dialog-content').innerText(), /CHASHITSU DAILY/);
     await live.locator('#info-dialog').evaluate((e) => e.close());
     await live.locator('.pd-faq summary').first().click();
     assert.equal(await live.locator('.pd-faq details').first().getAttribute('open'), '');

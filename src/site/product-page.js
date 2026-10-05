@@ -37,22 +37,13 @@
       ask = safeUrl(d.askUrl || p.buyUrl || '');
     return `<div class="pd-page" data-product-root="${esc(p.id)}"><div class="pd-breadcrumb"><a href="#home">Home</a><span>›</span><a href="#catalog">Products</a><span>›</span>${esc(name(p))}</div>
  <section class="pd-hero product-hero" data-pd-key="hero"><div class="pd-gallery"><div class="pd-thumbnails" aria-label="Product gallery">${photos.map((photo, i) => `<button class="pd-thumb ${i === 0 ? 'is-active' : ''}" data-pd-photo="${i}" data-product="${p.id}" aria-label="View product image ${i + 1}" aria-pressed="${i === 0}">${image(p, photo.url, photo.alt)}</button>`).join('')}</div><div class="pd-main-photo">${image(p, photos[0].url, photos[0].alt)}</div></div>
- <div class="pd-hero-copy"><div class="eyebrow">${esc(p.tag)}</div><h1>${esc(name(p))}</h1><h2>${esc(p.subtitle)}</h2>${rating > 0 ? `<div class="pd-rating"><span aria-label="${rating} out of 5 stars">★★★★★</span> ${rating.toFixed(1)} ${d.reviewUrl ? `<a href="${esc(safeUrl(d.reviewUrl))}" target="_blank" rel="noopener noreferrer">(${count || 0} reviews)</a>` : `<small>(${count || 0} reviews)</small>`}</div>` : ''}<p class="pd-description">${lines(p.description)}</p><div class="pd-stock ${d.stockStatus}"><i></i>${{ in_stock: 'In stock', out_of_stock: 'Out of stock', preorder: 'Pre-order', unconfirmed: 'Contact us for availability' }[d.stockStatus]}</div><div class="pd-pricing"><strong class="cms-price">${esc(ProductDetails.price(p) || 'สอบถามราคา')}</strong>${d.priceNote ? `<span>${esc(d.priceNote)}</span>` : ''}</div><div class="pd-quantity"><button data-pd-quantity="-1" aria-label="Decrease quantity">−</button><input id="pd-quantity" type="number" min="1" max="99" value="1" aria-label="Quantity"><button data-pd-quantity="1" aria-label="Increase quantity">＋</button></div><div class="pd-actions"><button class="btn" data-pd-order="${p.id}" ${d.stockStatus === 'out_of_stock' ? 'disabled' : ''}>${ico('chat')}${esc(d.orderLabel)} ${arrow()}</button>${ask ? `<a class="btn secondary" href="${esc(ask)}" target="_blank" rel="noopener noreferrer">${ico('chat')}${esc(d.askLabel)}</a>` : `<button class="btn secondary" data-dialog="contact">${ico('chat')}${esc(d.askLabel)}</button>`}</div><div class="pd-trust">${d.trust.map((x) => `<div>${ico(x.icon)}<span>${esc(x.title)}<small>${esc(x.text)}</small></span></div>`).join('')}</div></div></section>
+ <div class="pd-hero-copy"><div class="eyebrow">${esc(p.tag)}</div><h1>${esc(name(p))}</h1><h2>${esc(p.subtitle)}</h2>${rating > 0 ? `<div class="pd-rating"><span aria-label="${rating} out of 5 stars">★★★★★</span> ${rating.toFixed(1)} ${d.reviewUrl ? `<a href="${esc(safeUrl(d.reviewUrl))}" target="_blank" rel="noopener noreferrer">(${count || 0} reviews)</a>` : `<small>(${count || 0} reviews)</small>`}</div>` : ''}<p class="pd-description">${lines(p.description)}</p><div class="pd-stock ${d.stockStatus}"><i></i>${{ in_stock: 'In stock', out_of_stock: 'Out of stock', preorder: 'Pre-order', unconfirmed: 'Contact us for availability' }[d.stockStatus]}</div><div class="pd-pricing"><strong class="cms-price">${esc(ProductDetails.price(p) || 'สอบถามราคา')}</strong></div><div class="pd-actions"><button class="btn" data-pd-order="${p.id}" ${d.stockStatus === 'out_of_stock' ? 'disabled' : ''}>${ico('chat')}${esc(d.orderLabel)} ${arrow()}</button>${ask ? `<a class="btn secondary" href="${esc(ask)}" target="_blank" rel="noopener noreferrer">${ico('chat')}${esc(d.askLabel)}</a>` : `<button class="btn secondary" data-dialog="contact">${ico('chat')}${esc(d.askLabel)}</button>`}</div><div class="pd-trust">${d.trust.map((x) => `<div>${ico(x.icon)}<span>${esc(x.title)}<small>${esc(x.text)}</small></span></div>`).join('')}</div></div></section>
  <section class="pd-summary" data-pd-key="summary">${d.summary.map((x) => `<div>${ico(x.icon)}<span><small>${esc(x.label)}</small><strong>${esc(x.value || '—')}</strong></span></div>`).join('')}</section>
  <section class="pd-information pd-tinted" data-pd-key="information" id="ingredients"><h2>Product information</h2><div class="pd-info-body"><div class="pd-overview"><h3>Overview</h3><p>${lines(d.overview)}</p>${d.overviewBullets.length ? `<ul>${d.overviewBullets.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}${d.overviewClosing ? `<p>${lines(d.overviewClosing)}</p>` : ''}</div><div class="pd-facts"><h3>Supplement Facts</h3><p><b>Serving Size:</b> ${esc(d.servingSize || '—')}</p><p><b>Servings Per Container:</b> ${esc(d.servingsPerContainer || '—')}</p><table><thead><tr><th scope="col">Nutrient</th><th scope="col">Amount Per Serving</th><th scope="col">% Daily Value</th></tr></thead><tbody>${d.nutrition.length ? d.nutrition.map((x) => `<tr><th scope="row">${esc(x.name)}</th><td>${esc(x.amount)}</td><td>${esc(x.dailyValue)}</td></tr>`).join('') : `<tr><td colspan="3">ข้อมูลส่วนประกอบจะแสดงเมื่อได้รับการยืนยัน</td></tr>`}</tbody></table>${d.nutritionFootnote ? `<small>${lines(d.nutritionFootnote)}</small>` : ''}</div><div class="pd-information-grid">${d.information.map((x) => `<article>${ico(x.icon)}<div><h3>${esc(x.title)}</h3><p>${lines(x.body || 'โปรดสอบถามข้อมูลจากแบรนด์')}</p></div></article>`).join('')}</div></div></section>
  <section class="pd-certifications pd-tinted" data-pd-key="certificates"><h2>Certifications &amp; Quality</h2><div class="pd-pdf-grid">${d.certificates.length ? d.certificates.map((x) => `<article class="pd-pdf-card"><span class="pd-pdf-icon">${ico('mail')}<small>PDF</small></span><h3>${esc(x.title)}</h3><p>${lines(x.description)}</p>${x.url ? `<a href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener noreferrer" download>Download PDF ${arrow()}</a>` : '<small>ยังไม่มีไฟล์แนบ</small>'}</article>`).join('') : '<p class="pd-empty">เอกสารผลิตภัณฑ์จะแสดงที่นี่เมื่อแบรนด์อัปโหลด</p>'}</div></section>
  ${related.length ? `<section class="pd-related" data-pd-key="related"><h2>You may also like</h2><div class="pd-related-grid">${related.map((x) => `<article><a class="pd-related-image" href="#product/${x.id}">${image(x, x.image)}</a><div><h3>${esc(name(x))}</h3><p>${esc(x.subtitle)}</p><div class="pd-related-bottom"><strong>${esc(ProductDetails.price(x) || 'สอบถามราคา')}</strong><a href="#product/${x.id}" class="pd-view-link">View product</a></div></div></article>`).join('')}</div></section>` : ''}
  <section class="pd-faq" data-pd-key="faq" id="faq"><div class="pd-section-heading"><h2>Questions and answers</h2>${ask ? `<a href="${esc(ask)}" target="_blank" rel="noopener noreferrer">Ask on LINE ${arrow()}</a>` : ''}</div>${d.faq.map((x) => `<details><summary>${esc(x.question)}</summary><p>${lines(x.answer)}</p></details>`).join('')}${!d.faq.length ? '<p class="pd-empty">ติดต่อแบรนด์เพื่อสอบถามข้อมูลเพิ่มเติม</p>' : ''}</section></div>`;
   };
-  function quantity() {
-    const input = document.getElementById('pd-quantity');
-    if (!input) return 1;
-    input.value = Math.max(1, Math.min(99, Math.round(Number(input.value) || 1)));
-    return Number(input.value);
-  }
-  document.addEventListener('change', (e) => {
-    if (e.target.id === 'pd-quantity') quantity();
-  });
   document.addEventListener('click', (e) => {
     const thumb = e.target.closest('[data-pd-photo]');
     if (thumb) {
@@ -66,19 +57,12 @@
         t.setAttribute('aria-pressed', String(t === thumb));
       });
     }
-    const q = e.target.closest('[data-pd-quantity]');
-    if (q) {
-      const input = document.getElementById('pd-quantity');
-      input.value = quantity() + Number(q.dataset.pdQuantity);
-      quantity();
-    }
     const order = e.target.closest('[data-pd-order]');
     if (order) {
       const p = SiteCMS.product(order.dataset.pdOrder),
-        qty = quantity(),
         url = safeUrl(p.buyUrl || '');
       document.getElementById('dialog-content').innerHTML =
-        `<h2>${esc(name(p))}</h2><p>จำนวน ${qty} ชิ้น${p.price ? ` · ราคาต่อชิ้น ${esc(p.price)}` : ''}</p><p>แจ้งชื่อสินค้าและจำนวนกับทีมงานเพื่อยืนยันราคาและการจัดส่ง</p>${url ? `<div class="actions"><a class="btn" href="${esc(url)}" target="_blank" rel="noopener noreferrer">ไปที่ช่องทางสั่งซื้อ ${arrow()}</a></div>` : '<p>แบรนด์ยังไม่ได้ระบุช่องทางสั่งซื้อสำหรับสินค้านี้</p>'}`;
+        `<h2>${esc(name(p))}</h2>${p.price ? `<p>ราคาต่อชิ้น ${esc(p.price)}</p>` : ''}<p>แจ้งชื่อสินค้าและจำนวนกับทีมงานเพื่อยืนยันราคาและการจัดส่ง</p>${url ? `<div class="actions"><a class="btn" href="${esc(url)}" target="_blank" rel="noopener noreferrer">ไปที่ช่องทางสั่งซื้อ ${arrow()}</a></div>` : '<p>แบรนด์ยังไม่ได้ระบุช่องทางสั่งซื้อสำหรับสินค้านี้</p>'}`;
       document.getElementById('info-dialog').showModal();
     }
   });

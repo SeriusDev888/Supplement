@@ -281,7 +281,6 @@
     );
     body.append(sample);
     input(body, 'samplePrice', 'ราคาตัวอย่างบนหน้าสินค้า (ราคาจริงกรอกช่องราคาด้านบน)');
-    input(body, 'priceNote', 'ข้อความข้างราคา เช่น ราคาต่อหนึ่งหน่วย');
     input(body, 'stockStatus', 'สถานะสินค้า', {
       options: [
         ['unconfirmed', 'สอบถามสถานะสินค้า'],
