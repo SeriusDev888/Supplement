@@ -1,0 +1,343 @@
+/* Full-width surfaces; larger viewports scale the composition, not just its gutters. */
+body {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+@media (min-width: 1601px) {
+  :root {
+    --wide-copy: clamp(18px, 1vw, 28px);
+  }
+  .header,
+  .on-home .header {
+    width: 91%;
+    max-width: none;
+    left: auto;
+    height: clamp(64px, 3.2vw, 110px);
+    margin-top: clamp(18px, 1.2vw, 40px);
+    padding-inline: clamp(22px, 1.6vw, 52px);
+    gap: clamp(22px, 1.8vw, 60px);
+  }
+  .on-home .header {
+    left: 4.5%;
+  }
+  .header nav {
+    gap: clamp(21px, 1.4vw, 48px);
+    font-size: clamp(14px, 0.78vw, 26px);
+  }
+  .header .brand {
+    font-size: clamp(20px, 1.15vw, 36px);
+    gap: clamp(12px, 0.7vw, 22px);
+  }
+  .header .brand-symbol {
+    width: clamp(38px, 2vw, 66px);
+    height: clamp(38px, 2vw, 66px);
+    font-size: clamp(28px, 1.5vw, 48px);
+  }
+  .header-actions {
+    gap: clamp(12px, 0.8vw, 26px);
+  }
+  .header-actions select {
+    width: clamp(76px, 4.5vw, 136px);
+    font-size: clamp(14px, 0.75vw, 24px);
+    padding: clamp(7px, 0.45vw, 15px) clamp(12px, 0.7vw, 24px);
+  }
+  .header .line-btn {
+    font-size: clamp(14px, 0.75vw, 24px);
+    padding: clamp(10px, 0.65vw, 22px) clamp(20px, 1.2vw, 42px);
+  }
+  .rh-hero {
+    height: 51vw;
+    min-height: 0;
+    max-height: none;
+    padding: clamp(130px, 7.6vw, 270px) 4.7% clamp(70px, 4vw, 140px);
+    background-size: cover;
+  }
+  .rh-hero-copy {
+    width: 48%;
+    max-width: 1600px;
+    padding-bottom: 0;
+  }
+  .rh-hero h1 {
+    font-size: clamp(80px, 4.9vw, 184px);
+  }
+  .rh-tagline {
+    font-size: clamp(54px, 3.3vw, 124px);
+    margin: clamp(15px, 1vw, 38px) 0 clamp(20px, 1.3vw, 50px);
+  }
+  .rh-hero-copy .eyebrow {
+    font-size: clamp(14px, 0.8vw, 29px);
+    margin-bottom: clamp(17px, 1.1vw, 40px);
+  }
+  .rh-hero-copy > p {
+    font-size: clamp(22px, 1.25vw, 44px);
+    max-width: 100%;
+    line-height: 1.6;
+  }
+  .rh-hero .actions {
+    margin-top: clamp(25px, 1.5vw, 56px);
+    gap: clamp(30px, 2vw, 70px);
+  }
+  .reference-home .btn {
+    font-size: clamp(16px, 0.95vw, 30px);
+    padding: clamp(13px, 0.85vw, 28px) clamp(28px, 1.6vw, 58px);
+    gap: clamp(20px, 1.2vw, 40px);
+  }
+  .reference-home .underlink {
+    font-size: clamp(15px, 0.88vw, 28px);
+    gap: clamp(20px, 1.1vw, 36px);
+  }
+  .reference-home .btn .ui-icon,
+  .reference-home .underlink .ui-icon {
+    width: clamp(19px, 1.15vw, 36px);
+    height: clamp(19px, 1.15vw, 36px);
+  }
+  .rh-trust {
+    gap: clamp(26px, 1.6vw, 56px);
+    margin-top: clamp(34px, 2vw, 72px);
+  }
+  .rh-trust span {
+    font-size: clamp(12px, 0.7vw, 24px);
+    gap: clamp(10px, 0.6vw, 20px);
+  }
+  .rh-trust svg {
+    width: clamp(22px, 1.25vw, 42px);
+    height: clamp(22px, 1.25vw, 42px);
+  }
+  .rh-seal {
+    top: clamp(110px, 6.6vw, 240px);
+    width: clamp(145px, 8.7vw, 310px);
+    height: clamp(145px, 8.7vw, 310px);
+  }
+  .rh-seal strong {
+    font-size: clamp(39px, 2.4vw, 86px);
+  }
+  .rh-seal small {
+    font-size: clamp(9px, 0.57vw, 20px);
+  }
+  .rh-seal span {
+    font-size: clamp(14px, 0.86vw, 30px);
+  }
+  .rh-signature {
+    font-size: clamp(28px, 1.9vw, 68px);
+    bottom: clamp(38px, 2.4vw, 82px);
+  }
+  .rh-beginning {
+    padding-block: clamp(40px, 2.5vw, 90px) clamp(50px, 3vw, 108px);
+    gap: clamp(20px, 1.5vw, 50px);
+  }
+  .rh-beginning .eyebrow {
+    font-size: clamp(13px, 0.75vw, 25px);
+    margin-bottom: clamp(14px, 1vw, 35px);
+  }
+  .rh-beginning h2 {
+    font-size: clamp(52px, 3.2vw, 110px);
+  }
+  .rh-beginning p {
+    font-size: clamp(16px, 0.95vw, 30px);
+    max-width: 92%;
+    margin-top: clamp(20px, 1.4vw, 48px);
+  }
+  .rh-circles {
+    gap: clamp(20px, 1.3vw, 45px);
+  }
+  .rh-circle {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    max-width: 640px;
+  }
+  .rh-circle > svg {
+    width: clamp(36px, 2.3vw, 80px);
+    height: clamp(36px, 2.3vw, 80px);
+    margin-bottom: clamp(9px, 0.55vw, 20px);
+  }
+  .rh-circle strong {
+    font-size: clamp(26px, 1.7vw, 60px);
+  }
+  .rh-circle small {
+    font-size: clamp(16px, 0.9vw, 32px);
+  }
+  .rh-circle > span {
+    font-size: clamp(16px, 1vw, 34px);
+    margin-top: clamp(5px, 0.45vw, 16px);
+  }
+  .rh-circle b {
+    width: clamp(33px, 2.1vw, 72px);
+    height: clamp(33px, 2.1vw, 72px);
+    margin-top: clamp(9px, 0.6vw, 22px);
+  }
+  .rh-circle b svg {
+    width: 55%;
+    height: 55%;
+  }
+  .rh-landscape {
+    height: clamp(420px, 26vw, 980px);
+    padding-block: clamp(40px, 2.5vw, 90px);
+  }
+  .rh-landscape h2 {
+    font-size: clamp(78px, 4.8vw, 174px);
+  }
+  .rh-landscape p {
+    font-size: clamp(20px, 1.15vw, 38px);
+    margin: clamp(20px, 1.4vw, 48px) 0 clamp(13px, 0.85vw, 30px);
+  }
+  .japanese-vertical {
+    font-size: clamp(23px, 1.5vw, 50px);
+  }
+  .rh-container {
+    width: 91%;
+    max-width: 3200px;
+  }
+  .rh-origins {
+    padding-block: clamp(30px, 2vw, 68px);
+  }
+  .rh-heading {
+    margin-bottom: clamp(20px, 1.4vw, 48px);
+    gap: clamp(22px, 1.5vw, 52px);
+  }
+  .rh-heading h2 {
+    font-size: clamp(36px, 2.25vw, 76px);
+  }
+  .rh-heading p {
+    font-size: var(--wide-copy);
+  }
+  .rh-region-grid {
+    gap: clamp(18px, 1.2vw, 42px);
+  }
+  .region-photo {
+    height: auto;
+    aspect-ratio: 1.42;
+  }
+  .rh-region {
+    padding-bottom: clamp(23px, 1.5vw, 50px);
+  }
+  .rh-region h3 {
+    font-size: clamp(18px, 1.1vw, 34px);
+    padding: clamp(8px, 0.6vw, 20px) clamp(18px, 1.2vw, 42px);
+    margin-top: clamp(-45px, -1.4vw, -23px);
+  }
+  .rh-region > div:last-child {
+    padding: clamp(12px, 0.9vw, 32px);
+    gap: clamp(10px, 0.7vw, 24px);
+  }
+  .rh-region p {
+    font-size: clamp(16px, 0.95vw, 30px);
+  }
+  .round-arrow {
+    width: clamp(34px, 2.1vw, 68px);
+    height: clamp(34px, 2.1vw, 68px);
+  }
+  .round-arrow svg {
+    width: 60%;
+    height: 60%;
+  }
+  .rh-products {
+    padding-bottom: clamp(32px, 2.2vw, 76px);
+  }
+  .rh-product-grid {
+    gap: clamp(22px, 1.5vw, 54px);
+  }
+  .hp-art {
+    height: clamp(300px, 19vw, 680px);
+  }
+  .hp-info {
+    padding: clamp(24px, 1.6vw, 54px);
+  }
+  .hp-info h3 {
+    font-size: clamp(24px, 1.4vw, 46px);
+  }
+  .hp-sub,
+  .hp-info > p {
+    font-size: var(--wide-copy);
+  }
+  .hp-info > p {
+    margin-bottom: clamp(22px, 1.4vw, 50px);
+  }
+  .hp-benefits {
+    margin-bottom: clamp(24px, 1.5vw, 52px);
+  }
+  .hp-benefits span {
+    width: clamp(54px, 3.3vw, 112px);
+    height: clamp(54px, 3.3vw, 112px);
+  }
+  .hp-benefits svg {
+    width: 60%;
+    height: 60%;
+  }
+  .hp-benefits small {
+    font-size: clamp(14px, 0.8vw, 26px);
+  }
+  .rh-finder {
+    padding: clamp(32px, 2vw, 70px);
+    gap: clamp(25px, 1.6vw, 55px);
+    margin-bottom: clamp(32px, 2vw, 70px);
+  }
+  .rh-finder h2 {
+    font-size: clamp(32px, 2vw, 68px);
+  }
+  .rh-finder h3 {
+    font-size: clamp(22px, 1.3vw, 44px);
+  }
+  .rh-finder p,
+  .rh-goal p {
+    font-size: var(--wide-copy);
+  }
+  .rh-goals {
+    gap: clamp(14px, 0.9vw, 32px);
+  }
+  .rh-goal > span {
+    width: clamp(70px, 4.2vw, 144px);
+    height: clamp(70px, 4.2vw, 144px);
+    margin-bottom: clamp(16px, 1vw, 36px);
+  }
+  .rh-goal svg {
+    width: 60%;
+    height: 60%;
+  }
+  .rh-partner {
+    min-height: clamp(260px, 17vw, 600px);
+    padding-block: clamp(36px, 2.5vw, 86px);
+    margin-bottom: clamp(30px, 2vw, 70px);
+  }
+  .rh-partner h2 {
+    font-size: clamp(48px, 3vw, 102px);
+  }
+  .rh-partner p {
+    font-size: var(--wide-copy);
+  }
+  .rh-partner > span {
+    font-size: clamp(38px, 2.4vw, 84px);
+    top: 25%;
+  }
+  footer {
+    padding-block: clamp(28px, 2vw, 68px) clamp(20px, 1.2vw, 42px);
+  }
+  .rf-columns,
+  .rf-bottom {
+    max-width: 3200px;
+    margin-inline: auto;
+  }
+  .rf-columns h4 {
+    font-size: clamp(16px, 0.95vw, 30px);
+  }
+  .rf-columns a:not(.brand),
+  .rf-columns .text-button,
+  .rf-columns > div > span,
+  .rf-brand p {
+    font-size: clamp(15px, 0.88vw, 28px);
+  }
+  .rf-brand .brand {
+    font-size: clamp(22px, 1.3vw, 42px);
+  }
+  .rf-brand small,
+  .rf-bottom small {
+    font-size: clamp(13px, 0.75vw, 24px);
+  }
+  .rf-bottom {
+    margin-top: clamp(38px, 2.5vw, 86px);
+  }
+  .product-picture {
+    height: clamp(340px, 20vw, 640px);
+  }
+}

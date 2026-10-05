@@ -1,0 +1,926 @@
+/* Ingredients reference refresh: quiet Japanese still life and compact ingredient library. */
+.on-ingredients .header {
+  height: 4.65vw;
+  min-height: 52px;
+  border-radius: 0 0 1.8vw 1.8vw;
+}
+.on-ingredients .line-btn {
+  background: #104b3a;
+  border-color: #104b3a;
+}
+.ig3-page {
+  background: #fffdf8;
+  color: #100d56;
+}
+.ig3-page h1,
+.ig3-page h2,
+.ig3-page h3,
+.ig3-page h4,
+.ig3-page p {
+  margin: 0;
+}
+.ig3-page p {
+  color: #47536b;
+}
+.ig3-page .btn {
+  font-size: clamp(12px, 1.28vw, 40px);
+  padding: 1vw 2.2vw;
+  gap: 1.2vw;
+}
+.ig3-page .btn .ui-icon {
+  width: 1.7vw;
+  height: 1.7vw;
+  min-width: 15px;
+  min-height: 15px;
+}
+.ig3-eyebrow {
+  font-size: clamp(10px, 1vw, 29px);
+  letter-spacing: 0.23em;
+  color: #34546d;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.ig3-hero {
+  position: relative;
+  min-height: 37.4vw;
+  background: #f3f2e8 url('assets/ingredients-hero-v3.png') center center/cover no-repeat;
+  padding: 7.4vw 6.7% 4.7vw;
+  isolation: isolate;
+}
+.ig3-hero:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #fffffff2, #ffffffe3 35%, #ffffff4d 57%, transparent 68%);
+  z-index: 0;
+  pointer-events: none;
+}
+.ig3-hero:after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: -4%;
+  right: -4%;
+  bottom: -3.3vw;
+  height: 5.8vw;
+  border-radius: 50% 55% 0 0/75% 85% 0 0;
+  background: #fffdf8;
+  pointer-events: none;
+}
+.ig3-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 61%;
+}
+.ig3-hero h1 {
+  font: 500 clamp(35px, 4.5vw, 160px)/0.99 var(--serif);
+  letter-spacing: -0.04em;
+  margin: 1.1vw 0 1.35vw;
+}
+.ig3-hero h2 {
+  font-size: clamp(18px, 1.95vw, 61px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+}
+.ig3-hero-copy > p {
+  font-size: clamp(12px, 1.32vw, 39px);
+  line-height: 1.55;
+  margin: 1.2vw 0 1.55vw;
+  max-width: 94%;
+}
+.ig3-trust {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+  white-space: nowrap;
+}
+.ig3-trust > span {
+  display: flex;
+  align-items: center;
+  gap: 0.6vw;
+}
+.ig3-trust > span > .ui-icon {
+  width: 3.2vw;
+  height: 3.2vw;
+  min-width: 25px;
+  min-height: 25px;
+  padding: 0.55vw;
+  border-radius: 50%;
+  background: #fff;
+  box-sizing: content-box;
+  color: #176749;
+  stroke-width: 1.6;
+}
+.ig3-trust > span:nth-child(2) > .ui-icon,
+.ig3-trust > span:nth-child(3) > .ui-icon,
+.ig3-trust > span:nth-child(4) > .ui-icon {
+  color: #e42c85;
+}
+.ig3-trust strong,
+.ig3-trust small {
+  display: block;
+  font-size: clamp(9px, 1vw, 30px);
+  line-height: 1.45;
+}
+.ig3-trust strong {
+  font-weight: 600;
+}
+.ig3-japanese {
+  position: absolute;
+  z-index: 2;
+  right: 3.4%;
+  top: 22%;
+  font: clamp(18px, 1.9vw, 58px)/1.25 var(--serif);
+  writing-mode: vertical-rl;
+  letter-spacing: 0.12em;
+  color: #30332c;
+  text-shadow: 0 2px 10px #fff;
+}
+.ig3-script {
+  position: absolute;
+  z-index: 2;
+  right: 5%;
+  bottom: 4.2vw;
+  rotate: -10deg;
+  text-align: center;
+  font:
+    clamp(17px, 2vw, 61px)/0.95 'Caveat',
+    cursive;
+  color: #33483b;
+  text-shadow: 0 1px 6px #fff;
+}
+.ig3-content {
+  position: relative;
+  z-index: 3;
+  width: 91.2%;
+  margin: auto;
+}
+.ig3-key {
+  padding: 1.8vw 0 1.8vw;
+}
+.ig3-key-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2vw;
+  margin-bottom: 1.35vw;
+}
+.ig3-key-head h2,
+.ig3-other-head h2 {
+  font-size: clamp(21px, 2.23vw, 74px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.045em;
+  margin-top: 0.5vw;
+}
+.ig3-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.8vw;
+}
+.ig3-filter {
+  width: 8.4vw;
+  min-width: 74px;
+  min-height: 3.7vw;
+  border: 0;
+  border-radius: 5vw;
+  padding: 0.5vw 1vw;
+  background: #f0f4ff;
+  color: #10225c;
+  box-shadow: 0 4px 17px #46324a07;
+  transition:
+    translate 0.2s,
+    background 0.2s,
+    color 0.2s;
+}
+.ig3-filter strong {
+  display: block;
+  font-size: clamp(11px, 1.12vw, 32px);
+  line-height: 1.25;
+}
+.ig3-filter small {
+  display: block;
+  font-size: clamp(9px, 0.95vw, 27px);
+  line-height: 1.25;
+  margin-top: 0.2vw;
+}
+.ig3-filter-all {
+  background: #184f41;
+  color: #fff;
+}
+.ig3-filter-daily {
+  background: #eaf4ff;
+  color: #1457a4;
+}
+.ig3-filter-glow {
+  background: #fff0f5;
+  color: #e12278;
+}
+.ig3-filter-calm {
+  background: #f2ecff;
+  color: #6d3fce;
+}
+.ig3-filter.is-active {
+  box-shadow:
+    inset 0 0 0 2px #1e685446,
+    0 6px 12px #324b3614;
+}
+.ig3-filter-all.is-active {
+  background: #0d4a39;
+}
+.ig3-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.35vw;
+}
+.ig3-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.3vw;
+  background: #fff;
+  box-shadow: 0 6px 25px #6d55610d;
+  border: 1px solid #f2edea;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.ig3-card-art {
+  height: 16vw;
+  flex-shrink: 0;
+}
+.ig3-photo {
+  background-repeat: no-repeat;
+}
+.ig3-photo-vitamin,
+.ig3-photo-magnesium {
+  background-image: url('assets/ingredients-featured.png');
+  background-size: 300% auto;
+}
+.ig3-photo-vitamin {
+  background-position: 0 center;
+}
+.ig3-photo-magnesium {
+  background-position: 100% center;
+}
+.ig3-photo-collagen {
+  background-image: url('assets/collagen-powder-v3.png');
+  background-size: cover;
+  background-position: center 57%;
+}
+.ig3-badge {
+  position: absolute;
+  top: 1vw;
+  left: 1vw;
+  border-radius: 40px;
+  background: #fffdf8e8;
+  padding: 0.36vw 1vw;
+  font-size: clamp(9px, 0.95vw, 26px);
+  font-weight: 700;
+  color: #1854aa;
+}
+.ig3-badge-glow {
+  color: #d5307d;
+}
+.ig3-badge-calm {
+  color: #6c44ba;
+}
+.ig3-badge-other {
+  color: #548e5a;
+}
+.ig3-card-body {
+  padding: 1.1vw 2.2vw 1.35vw;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.ig3-card h3 {
+  font-size: clamp(18px, 2.15vw, 65px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+.ig3-card h4 {
+  font-size: clamp(14px, 1.65vw, 50px);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0.2vw 0 0.55vw;
+}
+.ig3-card p {
+  font-size: clamp(12px, 1.32vw, 40px);
+  line-height: 1.47;
+  min-height: 5.2vw;
+}
+.ig3-pills {
+  display: flex;
+  gap: 0.5vw;
+  flex-wrap: wrap;
+  margin: 0.8vw 0 1vw;
+}
+.ig3-pills > span {
+  border-radius: 50px;
+  background: #fff1eb;
+  padding: 0.45vw 0.8vw;
+  white-space: nowrap;
+  font-size: clamp(9px, 1vw, 30px);
+  line-height: 1.25;
+}
+.ig3-card:nth-child(2) .ig3-pills > span {
+  background: #fff0f1;
+}
+.ig3-card:nth-child(3) .ig3-pills > span {
+  background: #f3eeff;
+}
+.ig3-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 1vw;
+  width: max-content;
+  font-size: clamp(13px, 1.4vw, 42px);
+  font-weight: 600;
+  margin-top: auto;
+}
+.ig3-detail .ui-icon {
+  width: 1.8vw;
+  height: 1.8vw;
+  min-width: 15px;
+  min-height: 15px;
+  transition: translate 0.25s;
+}
+.ig3-detail:hover .ui-icon {
+  translate: 4px 0;
+}
+.ig3-other {
+  padding: 1.2vw 1.6vw 1.8vw;
+}
+.ig3-other[hidden] {
+  display: none;
+}
+.ig3-other-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2vw;
+  margin-bottom: 1.1vw;
+}
+.ig3-underlink {
+  border: 0;
+  border-bottom: 1px solid #262967;
+  background: transparent;
+  color: #111a58;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8vw;
+  font-size: clamp(11px, 1.32vw, 39px);
+  padding: 0.2vw 0.1vw;
+}
+.ig3-underlink .ui-icon {
+  height: 1.7vw;
+  width: 1.7vw;
+}
+.ig3-natural-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.7vw;
+}
+.ig3-natural {
+  text-align: center;
+  min-width: 0;
+}
+.ig3-natural-art {
+  height: 10.5vw;
+  width: 10.5vw;
+  margin: 0 auto 0.85vw;
+  border-radius: 50%;
+  background-image: url('assets/ingredients-natural.png');
+  background-size: 300% 200%;
+  box-shadow: 0 0 0 1px #fff;
+  transition: scale 0.35s;
+}
+.ig3-photo-natural-0 {
+  background-position: 0 0;
+}
+.ig3-photo-natural-1 {
+  background-position: 50% 0;
+}
+.ig3-photo-natural-2 {
+  background-position: 100% 0;
+}
+.ig3-photo-natural-3 {
+  background-position: 0 100%;
+}
+.ig3-photo-natural-4 {
+  background-position: 50% 100%;
+}
+.ig3-photo-natural-5 {
+  background-position: 100% 100%;
+}
+.ig3-natural h3 {
+  font-size: clamp(12px, 1.27vw, 36px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+.ig3-natural p {
+  font-size: clamp(11px, 1.18vw, 35px);
+  margin-top: 0.35vw;
+}
+.ig3-card-art[class*='ig3-photo-natural-'] {
+  background-size: 300% 400%;
+}
+.ig3-card-art.ig3-photo-natural-0 {
+  background-position: 0 16.667%;
+}
+.ig3-card-art.ig3-photo-natural-1 {
+  background-position: 50% 16.667%;
+}
+.ig3-card-art.ig3-photo-natural-2 {
+  background-position: 100% 16.667%;
+}
+.ig3-card-art.ig3-photo-natural-3 {
+  background-position: 0 83.333%;
+}
+.ig3-card-art.ig3-photo-natural-4 {
+  background-position: 50% 83.333%;
+}
+.ig3-card-art.ig3-photo-natural-5 {
+  background-position: 100% 83.333%;
+}
+.ig3-process {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 1vw;
+  align-items: center;
+  background: linear-gradient(120deg, #fff1ee, #fff9f3 58%, #fff5eb);
+  border-radius: 3vw;
+  padding: 2.4vw 2.5vw;
+  margin: 1.1vw -1% 0;
+  min-height: 19vw;
+}
+.ig3-process-copy h2 {
+  font-size: clamp(20px, 2.4vw, 77px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  margin: 0.5vw 0 1vw;
+}
+.ig3-process-copy p {
+  font-size: clamp(12px, 1.28vw, 38px);
+  line-height: 1.5;
+  max-width: 89%;
+}
+.ig3-process .btn {
+  background: transparent;
+  box-shadow: none;
+  color: #111a58;
+  border-color: #687395;
+  margin-top: 1.4vw;
+  font-size: clamp(10px, 1.13vw, 34px);
+  padding: 0.8vw 1.5vw;
+}
+.ig3-process ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.3vw;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ig3-process li {
+  position: relative;
+  text-align: center;
+}
+.ig3-process li:not(:last-child):after {
+  content: '→';
+  position: absolute;
+  right: -1.6vw;
+  top: 4vw;
+  color: #6884a6;
+  font: 2vw var(--serif);
+}
+.ig3-process-art {
+  display: block;
+  width: 9.7vw;
+  height: 9.7vw;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+}
+.ig3-process-tea {
+  background-image: url('assets/ingredients-natural.png');
+  background-size: 300% 200%;
+  background-position: 50% 0;
+}
+.ig3-process-water {
+  background-image: url('assets/ingredients-natural.png');
+  background-size: 300% 200%;
+  background-position: 50% 100%;
+}
+.ig3-process-capsules {
+  background-image: url('assets/ingredients-natural.png');
+  background-size: 300% 200%;
+  background-position: 0 100%;
+}
+.ig3-process-bottle {
+  background-image: url('assets/catalog-v2.png');
+  background-size: 300% auto;
+  background-position: 0 50%;
+}
+.ig3-process li > b {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: -1.2vw auto 0.35vw;
+  width: 2.6vw;
+  height: 2.6vw;
+  border-radius: 50%;
+  background: white;
+  color: #12366f;
+  font-size: clamp(13px, 1.5vw, 42px);
+  font-weight: 700;
+  box-shadow: 0 1px 5px #776f751c;
+}
+.ig3-process li > strong {
+  display: block;
+  font-size: clamp(11px, 1.25vw, 36px);
+  line-height: 1.45;
+  font-weight: 600;
+}
+.ig3-banner {
+  min-height: 11.7vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2vw;
+  padding: 1.5vw 6.7%;
+  background:
+    linear-gradient(90deg, #fff1e6ba, transparent 48%, #fce7f133),
+    url('assets/japan.png') center 57% / cover;
+}
+.ig3-banner h2 {
+  font: italic 500 clamp(22px, 2.4vw, 73px)/1.03 var(--serif);
+  letter-spacing: -0.025em;
+}
+.ig3-banner p {
+  font-size: clamp(12px, 1.3vw, 36px);
+  margin-top: 0.55vw;
+}
+.ig3-banner .btn {
+  white-space: nowrap;
+  background: #fffdf9e8;
+  box-shadow: 0 2px 9px #2919521a;
+}
+.ig3-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+.ig3-page :focus-visible {
+  outline: 3px solid #448f62;
+  outline-offset: 4px;
+}
+.ig3-card,
+.ig3-natural,
+.ig3-process li {
+  transition: translate 0.25s;
+}
+.ig3-hero .motion-atmosphere,
+.ig3-banner .motion-atmosphere {
+  z-index: 1;
+}
+.ig3-hero .motion-fleck,
+.ig3-banner .motion-fleck {
+  background: linear-gradient(125deg, #f8e8ee, #9ec46cab);
+}
+.ig3-process.motion-in-view li {
+  animation: ig3-step 0.7s cubic-bezier(0.16, 0.8, 0.25, 1) both;
+  animation-delay: calc(var(--step) * 130ms);
+}
+@keyframes ig3-step {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.motion-off .ig3-process li {
+  opacity: 1;
+  translate: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .ig3-filter:hover {
+    translate: 0 -3px;
+  }
+  .ig3-natural:hover .ig3-natural-art {
+    scale: 1.05;
+  }
+  .ig3-card:hover {
+    translate: 0 -3px;
+  }
+}
+@media (max-width: 760px) {
+  .on-ingredients .header {
+    height: 55px;
+    min-height: 0;
+    border-radius: 30px;
+    margin-top: 12px;
+  }
+  .ig3-page .btn {
+    font-size: 11px;
+    padding: 10px 15px;
+    gap: 8px;
+  }
+  .ig3-page .btn .ui-icon {
+    height: 16px;
+    width: 16px;
+  }
+  .ig3-hero {
+    min-height: 700px;
+    padding: 105px 6% 270px;
+    background-size: auto 350px;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-color: #f4f2e9;
+  }
+  .ig3-hero:before {
+    background: linear-gradient(#ffffffee 0%, #fffffff1 41%, #ffffffe0 51%, transparent 74%);
+  }
+  .ig3-hero:after {
+    bottom: -15px;
+    height: 35px;
+  }
+  .ig3-hero-copy {
+    width: 100%;
+  }
+  .ig3-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+  .ig3-hero h1 {
+    font-size: clamp(33px, 9vw, 58px);
+    margin: 16px 0 19px;
+  }
+  .ig3-hero h2 {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+  .ig3-hero-copy > p {
+    font-size: 13px;
+    margin: 14px 0 18px;
+  }
+  .ig3-hero-copy > p br {
+    display: none;
+  }
+  .ig3-trust {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .ig3-trust > span {
+    gap: 6px;
+  }
+  .ig3-trust > span > .ui-icon {
+    height: 27px;
+    width: 27px;
+    min-height: 27px;
+    min-width: 27px;
+    padding: 5px;
+  }
+  .ig3-trust strong,
+  .ig3-trust small {
+    font-size: 9px;
+  }
+  .ig3-japanese {
+    font-size: 15px;
+    top: auto;
+    bottom: 210px;
+    right: 5%;
+    background: #ffffff70;
+    border-radius: 15px;
+    padding: 7px 3px;
+  }
+  .ig3-script {
+    font-size: 22px;
+    bottom: 28px;
+  }
+  .ig3-content {
+    width: 91%;
+  }
+  .ig3-key {
+    padding: 29px 0 16px;
+  }
+  .ig3-key-head {
+    display: block;
+    margin-bottom: 18px;
+  }
+  .ig3-key-head h2,
+  .ig3-other-head h2 {
+    font-size: 25px;
+    margin-top: 6px;
+  }
+  .ig3-filters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 18px;
+  }
+  .ig3-filter {
+    min-width: 0;
+    width: 100%;
+    min-height: 48px;
+    padding: 7px 2px;
+  }
+  .ig3-filter strong {
+    font-size: 10px;
+  }
+  .ig3-filter small {
+    font-size: 8px;
+  }
+  .ig3-grid {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+  .ig3-card {
+    border-radius: 15px;
+  }
+  .ig3-card-art {
+    height: 190px;
+  }
+  .ig3-badge {
+    top: 13px;
+    left: 14px;
+    font-size: 11px;
+    padding: 5px 13px;
+  }
+  .ig3-card-body {
+    padding: 15px 19px 17px;
+  }
+  .ig3-card h3 {
+    font-size: 23px;
+  }
+  .ig3-card h4 {
+    font-size: 17px;
+    margin: 4px 0 9px;
+  }
+  .ig3-card p {
+    font-size: 13px;
+    min-height: 0;
+  }
+  .ig3-pills {
+    gap: 7px;
+    margin: 14px 0;
+  }
+  .ig3-pills > span {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+  .ig3-detail {
+    font-size: 14px;
+    gap: 9px;
+  }
+  .ig3-detail .ui-icon {
+    height: 17px;
+    width: 17px;
+  }
+  .ig3-other {
+    padding: 23px 0 25px;
+  }
+  .ig3-other-head {
+    align-items: start;
+    gap: 10px;
+  }
+  .ig3-other-head h2 {
+    font-size: 19px;
+  }
+  .ig3-underlink {
+    font-size: 10px;
+    white-space: nowrap;
+    padding: 3px;
+  }
+  .ig3-underlink .ui-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .ig3-natural-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 17px 10px;
+  }
+  .ig3-natural-art {
+    width: 91px;
+    height: 91px;
+    max-width: 100%;
+    margin-bottom: 9px;
+  }
+  .ig3-natural h3 {
+    font-size: 12px;
+  }
+  .ig3-natural p {
+    font-size: 11px;
+  }
+  .ig3-process {
+    grid-template-columns: 1fr;
+    padding: 24px 19px;
+    border-radius: 24px;
+    gap: 22px;
+    margin: 8px -2% 0;
+  }
+  .ig3-process-copy h2 {
+    font-size: 22px;
+    margin: 8px 0 12px;
+  }
+  .ig3-process-copy p {
+    font-size: 12px;
+    max-width: 100%;
+  }
+  .ig3-process .btn {
+    font-size: 11px;
+    padding: 10px 15px;
+    margin-top: 17px;
+  }
+  .ig3-process ol {
+    gap: 8px;
+  }
+  .ig3-process-art {
+    height: 67px;
+    width: 67px;
+    max-width: 100%;
+  }
+  .ig3-process li:not(:last-child):after {
+    font-size: 16px;
+    top: 26px;
+    right: -8px;
+  }
+  .ig3-process li > b {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    margin: -9px auto 6px;
+  }
+  .ig3-process li > strong {
+    font-size: 9px;
+  }
+  .ig3-banner {
+    min-height: 235px;
+    display: block;
+    padding: 24px 7%;
+    background-size: auto 235px;
+    background-position: center bottom;
+  }
+  .ig3-banner h2 {
+    font-size: 24px;
+  }
+  .ig3-banner p {
+    font-size: 12px;
+    margin-top: 7px;
+  }
+  .ig3-banner .btn {
+    margin-top: 16px;
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ig3-process li {
+    animation: none !important;
+    opacity: 1 !important;
+    translate: none !important;
+  }
+}
+
+.ig3-banner {
+  position: relative;
+  isolation: isolate;
+}
+.ig3-banner > div,
+.ig3-banner > .btn {
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 760px) {
+  .ig3-japanese {
+    display: none;
+  }
+}
+.ig3-reset {
+  border: 1px solid #a8b5a6;
+  border-radius: 50px;
+  background: #fffdf8;
+  color: #0d4a39;
+  font-size: clamp(11px, 1.1vw, 30px);
+  padding: 0.7vw 1.4vw;
+  white-space: nowrap;
+}
+.ig3-reset[hidden] {
+  display: none;
+}
+@media (max-width: 760px) {
+  .ig3-reset {
+    margin-top: 14px;
+    padding: 8px 13px;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,1 @@
+const fs=require('node:fs');const f='C:/Users/panna/chashitsu-wellness/dist/motion.js';let s=fs.readFileSync(f,'utf8');s=s.replace("if(el.dataset.reveal==='true'){el.classList.add('motion-entering')","if(el.dataset.reveal==='true'&&!disabled()){el.classList.add('motion-entering')");fs.writeFileSync(f,s);

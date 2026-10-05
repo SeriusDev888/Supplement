@@ -1,0 +1,423 @@
+/* Motion is a progressive enhancement: the page remains visible without JavaScript. */
+.motion-progress {
+  position: fixed;
+  z-index: 100;
+  inset: 0 0 auto;
+  height: 3px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #7160ad, #ec80b3, #b2ce76);
+  transform-origin: left;
+  transform: scaleX(var(--reading-progress, 0));
+}
+.motion-toggle {
+  position: fixed;
+  z-index: 40;
+  left: 18px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #d8c5da;
+  border-radius: 50px;
+  padding: 9px 14px;
+  background: #fffaf5ed;
+  color: #302955;
+  box-shadow: 0 3px 18px #30295515;
+  backdrop-filter: blur(10px);
+  font: 12px var(--sans);
+  transition:
+    box-shadow 0.2s,
+    background 0.2s;
+  min-height: 40px;
+}
+.motion-toggle:hover {
+  background: #fff;
+  box-shadow: 0 5px 22px #30295528;
+}
+.motion-toggle svg {
+  height: 15px;
+  width: 15px;
+  fill: currentColor;
+}
+.motion-toggle[disabled] {
+  cursor: default;
+  opacity: 0.8;
+}
+.motion-scene {
+  isolation: isolate;
+}
+.motion-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+  contain: layout paint;
+}
+.motion-fleck {
+  position: absolute;
+  left: var(--x);
+  top: -40px;
+  width: var(--size);
+  height: calc(var(--size) * 0.52);
+  border-radius: 70% 25% 65% 30%;
+  background: linear-gradient(125deg, #fff8faed, #f89dc6c9);
+  box-shadow: 0 0 9px #fff6;
+  opacity: 0;
+  animation: lovely-drift var(--duration) var(--delay) linear infinite;
+  animation-play-state: paused;
+  will-change: transform;
+}
+.motion-scene.motion-in-view .motion-fleck {
+  animation-play-state: running;
+}
+.motion-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(ellipse at 20% 38%, #fff7fb35, transparent 42%);
+  animation: lovely-light 13s ease-in-out infinite alternate;
+  animation-play-state: paused;
+  pointer-events: none;
+}
+.motion-scene.motion-in-view .motion-glow {
+  animation-play-state: running;
+}
+@keyframes lovely-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -25px, 0) rotate(0deg);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  82% {
+    opacity: 0.58;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift), var(--fall), 0) rotate(330deg);
+  }
+}
+@keyframes lovely-light {
+  from {
+    transform: translate3d(-4%, -2%, 0);
+  }
+  to {
+    transform: translate3d(8%, 5%, 0);
+  }
+}
+.rh-hero-copy,
+.rh-seal,
+.rh-signature {
+  z-index: 2;
+}
+.rh-wave {
+  z-index: 3;
+}
+.rh-landscape > div:not(.motion-atmosphere),
+.rh-partner > div:not(.motion-atmosphere) {
+  position: relative;
+  z-index: 2;
+}
+.rh-partner > .motion-atmosphere {
+  max-width: none;
+  position: absolute;
+  z-index: 0;
+}
+.rh-circle.motion-in-view {
+  animation: lovely-float 4.5s ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+.rh-circle:nth-child(2) {
+  --float-delay: -1.5s;
+}
+.rh-circle:nth-child(3) {
+  --float-delay: -3s;
+}
+@keyframes lovely-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+.rh-seal.motion-in-view {
+  animation: lovely-seal 6s ease-in-out infinite;
+}
+@keyframes lovely-seal {
+  0%,
+  100% {
+    rotate: -2deg;
+    translate: 0 0;
+  }
+  50% {
+    rotate: 3deg;
+    translate: 0 -7px;
+  }
+}
+.rh-wave.motion-in-view {
+  animation: lovely-wave 7s ease-in-out infinite alternate;
+}
+@keyframes lovely-wave {
+  from {
+    translate: 0 0;
+    scale: 1 1;
+  }
+  to {
+    translate: 0 -7px;
+    scale: 1.025 1.1;
+  }
+}
+.motion-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.38s,
+    border-color 0.38s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .motion-card:not(.motion-entering):hover {
+    transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))
+      translateY(-7px);
+    box-shadow: 0 22px 40px #74456f1c;
+    border-color: #e5a9cf;
+  }
+  .rh-region:hover .region-photo {
+    background-size: 213% 213%;
+  }
+  .rh-region .region-photo {
+    transition: background-size 0.65s ease;
+  }
+  .hp-card:hover .v2-bottle:after,
+  .product-card:hover .v2-bottle:after {
+    scale: 1.05;
+    translate: 0 -4px;
+  }
+  .v2-bottle:after {
+    transition:
+      scale 0.65s ease,
+      translate 0.65s ease;
+  }
+  .btn {
+    transition:
+      translate 0.2s ease,
+      transform 0.25s,
+      box-shadow 0.3s,
+      background 0.3s;
+  }
+  .btn:hover {
+    box-shadow: 0 9px 25px #3d285f35;
+    translate: var(--magnet-x, 0px) var(--magnet-y, 0px);
+  }
+  .btn:hover > .ui-icon,
+  .underlink:hover > .ui-icon,
+  .rh-region:hover .round-arrow > .ui-icon {
+    translate: 4px 0;
+  }
+  .btn > .ui-icon,
+  .underlink > .ui-icon,
+  .round-arrow > .ui-icon {
+    transition: translate 0.3s ease;
+  }
+  .rh-circle:hover > svg {
+    rotate: 14deg;
+    scale: 1.12;
+  }
+  .rh-circle > svg {
+    transition:
+      rotate 0.35s,
+      scale 0.35s;
+  }
+  .brand:hover .brand-symbol {
+    rotate: -12deg;
+    scale: 1.08;
+  }
+  .brand-symbol {
+    transition:
+      rotate 0.35s,
+      scale 0.35s;
+  }
+  .rh-goal:hover > span {
+    rotate: -9deg;
+    scale: 1.12;
+  }
+  .rh-goal > span {
+    transition:
+      rotate 0.35s,
+      scale 0.35s;
+  }
+}
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+.motion-ripple {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 50%;
+  background: #ffffff55;
+  translate: -50% -50%;
+  width: 18px;
+  height: 18px;
+  animation: lovely-ripple 0.65s ease-out forwards;
+}
+@keyframes lovely-ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(25);
+    opacity: 0;
+  }
+}
+.header nav a:after {
+  transition: scale 0.3s;
+  transform-origin: left;
+}
+.header nav a:not(.active):before {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #ae79b2;
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale 0.3s;
+}
+.header nav a:hover:before {
+  scale: 1 1;
+}
+.motion-dialog[open] {
+  animation: lovely-dialog 0.3s cubic-bezier(0.18, 0.8, 0.3, 1);
+}
+.motion-dialog[open]::backdrop {
+  animation: lovely-backdrop 0.3s ease;
+}
+@keyframes lovely-dialog {
+  from {
+    opacity: 0;
+    translate: 0 20px;
+    scale: 0.96;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+@keyframes lovely-backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.header nav.open {
+  animation: lovely-menu 0.3s ease-out;
+}
+@keyframes lovely-menu {
+  from {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.motion-suspended * {
+  animation-play-state: paused !important;
+}
+.motion-off,
+.motion-off * {
+  scroll-behavior: auto !important;
+  animation: none !important;
+  transition: none !important;
+}
+.motion-off .motion-atmosphere,
+.motion-off .motion-progress {
+  display: none;
+}
+.motion-off .motion-card,
+.motion-off .btn,
+.motion-off .rh-circle,
+.motion-off .rh-seal,
+.motion-off .rh-wave {
+  translate: none !important;
+  rotate: none !important;
+  scale: none !important;
+}
+.motion-off .motion-card,
+.motion-off .btn {
+  transform: none !important;
+}
+.motion-off .v2-bottle:after {
+  scale: none !important;
+  translate: none !important;
+}
+@media (max-width: 760px) {
+  .motion-toggle {
+    left: 10px;
+    bottom: 10px;
+    font-size: 11px;
+    padding: 8px 11px;
+  }
+  .motion-fleck:nth-child(n + 9) {
+    display: none;
+  }
+  .motion-card {
+    transform-style: flat;
+  }
+  .rh-circle.motion-in-view {
+    animation-duration: 5.5s;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html,
+  html * {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .motion-atmosphere,
+  .motion-progress {
+    display: none !important;
+  }
+  .motion-card,
+  .btn {
+    transform: none !important;
+    translate: none !important;
+  }
+  .rh-circle,
+  .rh-seal,
+  .rh-wave {
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+  }
+}
+.motion-off *::before,
+.motion-off *::after {
+  animation: none !important;
+  transition: none !important;
+}
+.motion-suspended *::before,
+.motion-suspended *::after {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

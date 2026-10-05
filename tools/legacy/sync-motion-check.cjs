@@ -1,0 +1,1 @@
+const fs=require('node:fs');const f='C:/Users/panna/chashitsu-wellness/verify-motion.cjs';let s=fs.readFileSync(f,'utf8');s=s.replace("await p.emulateMedia({reducedMotion:'reduce'});","await p.emulateMedia({reducedMotion:'reduce'});await p.waitForFunction(()=>document.querySelector('.motion-toggle').disabled);");fs.writeFileSync(f,s);

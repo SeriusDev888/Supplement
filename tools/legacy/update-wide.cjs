@@ -1,0 +1,1 @@
+const fs=require('node:fs');const file='C:/Users/panna/chashitsu-wellness/dist/index.html';let s=fs.readFileSync(file,'utf8');if(!s.includes('wide-screen.css'))s=s.replace('<link rel="stylesheet" href="reference.css">','<link rel="stylesheet" href="reference.css"><link rel="stylesheet" href="wide-screen.css">');fs.writeFileSync(file,s);
