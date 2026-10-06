@@ -41,7 +41,7 @@ const assert = require('node:assert/strict');
       '/assets/story-question.png',
     );
     await page.locator('.management-launch [data-manager="contact"]').click();
-    assert.equal(await page.locator('#contact-details').inputValue(), '');
+    assert.equal(await page.locator('#contact-details').innerText(), '');
     const text = 'ติดต่อเรา\ncontact@example.test\n<script>alert(1)</script>';
     await page.locator('#contact-details').fill(text);
     await page.locator('#contact-details').dispatchEvent('change');
@@ -55,7 +55,7 @@ const assert = require('node:assert/strict');
     await page.locator('#studio').waitFor({ state: 'visible' });
     assert.equal(await page.locator('#studio-brand-name').innerText(), 'SORA');
     await page.locator('.management-launch [data-manager="contact"]').click();
-    assert.equal(await page.locator('#contact-details').inputValue(), text);
+    assert.equal(await page.locator('#contact-details').innerText(), text);
     await page.screenshot({ path: 'editor-contact.png' });
     await page.locator('#manager-back').click();
     assert.ok(await page.locator('.studio-body').isVisible());

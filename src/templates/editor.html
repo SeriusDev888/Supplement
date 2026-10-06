@@ -96,6 +96,10 @@
               ><input id="interactive" type="checkbox" /> ทดลองใช้งาน</label
             ><a id="open-live" href="/" target="_blank" rel="noopener">เปิดหน้าเว็บ ↗</a>
           </div>
+          <div id="product-page-lock" hidden role="note">
+            หน้านี้แก้ไขข้อมูลผ่านจัดการสินค้า
+            <button type="button" data-manager="products">จัดการสินค้า</button>
+          </div>
           <div id="frame-area">
             <iframe id="preview" title="ตัวอย่างเว็บไซต์ คลิกองค์ประกอบเพื่อแก้ไข"></iframe>
           </div>
@@ -338,19 +342,6 @@
                 rows="5"
               ></textarea>
             </label>
-            <h3>จุดเด่นสินค้า</h3>
-            <div class="field-grid">
-              <label class="field">ไอคอน 1<select id="benefit-icon-0"></select></label
-              ><label class="field">ข้อความ<input id="benefit-text-0" maxlength="250" /></label>
-            </div>
-            <div class="field-grid">
-              <label class="field">ไอคอน 2<select id="benefit-icon-1"></select></label
-              ><label class="field">ข้อความ<input id="benefit-text-1" maxlength="250" /></label>
-            </div>
-            <div class="field-grid">
-              <label class="field">ไอคอน 3<select id="benefit-icon-2"></select></label
-              ><label class="field">ข้อความ<input id="benefit-text-2" maxlength="250" /></label>
-            </div>
             <p class="hint">บันทึกฉบับร่างและเผยแพร่ด้วยปุ่มด้านบน</p>
           </section>
           <section id="tab-brand" class="tab-panel" hidden>
@@ -489,17 +480,13 @@
             >
           </section>
           <section id="tab-contact" class="tab-panel" hidden>
-            <div class="panel-intro">
-              <span class="tiny">CONTACT</span>
-              <h2>ข้อมูลติดต่อ</h2>
-            </div>
-            <label class="field" for="contact-details">รายละเอียด Contact</label
-            ><textarea
+            <div
               id="contact-details"
-              maxlength="20000"
+              contenteditable="plaintext-only"
+              role="textbox"
+              aria-multiline="true"
               aria-label="รายละเอียด Contact"
-              placeholder="เพิ่มรายละเอียดการติดต่อที่นี่"
-            ></textarea>
+            ></div>
           </section>
           <section id="tab-media" class="tab-panel" hidden>
             <div class="panel-intro">
@@ -557,6 +544,7 @@
       <div id="management-panels"></div>
     </section>
     <script src="site-config.js"></script>
+    <script src="sticker-library.js"></script>
     <script src="product-details.js"></script>
     <script src="editor.js"></script>
     <script src="cms-admin.js"></script>

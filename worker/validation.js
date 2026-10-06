@@ -1,4 +1,5 @@
 import { fail } from './http.js';
+import additionalStickers from '../src/shared/sticker-library.json' with { type: 'json' };
 const STYLES = new Set([
   'color',
   'backgroundColor',
@@ -39,6 +40,7 @@ const STYLES = new Set([
 ]);
 const ANIMATIONS = new Set(['default', 'none', 'fade', 'slide', 'zoom', 'float', 'pulse']);
 const STICKERS = new Set([
+  ...Object.keys(additionalStickers),
   'arrow',
   'leaf',
   'flower',

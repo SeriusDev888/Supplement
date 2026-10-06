@@ -1,4 +1,5 @@
 window.SiteDefaults = {
+  isProductRoute: (route) => route === 'catalog' || /^product(?:\/|$)/.test(route),
   products: [
     {
       name: 'DAILY',

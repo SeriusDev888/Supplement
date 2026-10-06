@@ -108,3 +108,17 @@
   line-height: 1.8;
   min-height: 35vh;
 }
+.partner-line-qr {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  font-size: 14px;
+}
+.partner-line-qr img {
+  width: 180px;
+  height: 180px;
+  max-width: 100%;
+  border-radius: 12px;
+}

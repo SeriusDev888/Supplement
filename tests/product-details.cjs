@@ -88,9 +88,7 @@ const assert = require('node:assert/strict');
     await section('ข้อมูลสรุป');
     await fill('pd-summary-0-value', '1 capsule');
     await section('Overview');
-    await fill('benefit-text-0', 'Product benefit <b>test</b>');
-    await page.selectOption('#benefit-icon-0', 'sun');
-    await fill('benefit-text-1', '');
+    assert.equal(await page.locator('[id^="benefit-icon-"], [id^="benefit-text-"]').count(), 0);
     await fill('pd-edit-overview', 'Overview test <img onerror=alert(1)>');
     await fill('pd-edit-overviewBullets', 'First point\nSecond point');
     await section('Supplement Facts');
@@ -156,13 +154,7 @@ const assert = require('node:assert/strict');
     await live.goto(base + '/#product/daily');
     await live.reload();
     await live.locator('.pd-page').waitFor();
-    assert.equal(await live.locator('.pd-benefits li').count(), 2);
-    assert.match(await live.locator('.pd-benefits').innerText(), /Product benefit <b>test<\/b>/);
-    assert.equal(await live.locator('.pd-benefits b').count(), 0);
-    assert.equal(
-      await live.locator('.pd-benefits svg').first().getAttribute('viewBox'),
-      '0 0 24 24',
-    );
+    assert.equal(await live.locator('.pd-benefits').count(), 0);
     await live.waitForTimeout(300);
     assert.equal(await live.locator('.pd-thumb').count(), 2);
     assert.equal(await live.locator('.pd-sample-note').count(), 0);

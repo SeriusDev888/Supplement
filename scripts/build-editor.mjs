@@ -17,6 +17,11 @@ const files = JSON.parse(await readFile(resolve(root, 'scripts/frontend-files.js
 for (const [filename, source] of Object.entries(files)) {
   await copyFile(resolve(root, source), resolve(output, 'client', filename));
 }
+const stickers = await readFile(resolve(root, 'src/shared/sticker-library.json'), 'utf8');
+await writeFile(
+  resolve(output, 'client/sticker-library.js'),
+  `// Lucide icons, ISC license: assets/licenses/lucide.txt\nwindow.StickerLibrary = ${stickers};\nObject.assign(SiteDefaults.icons, Object.fromEntries(Object.entries(StickerLibrary).map(([key, item]) => [key, item.path])));\n`,
+);
 await build({
   entryPoints: [resolve(root, 'worker/index.js')],
   outfile: resolve(output, 'server/index.js'),

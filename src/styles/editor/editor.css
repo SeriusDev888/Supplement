@@ -1119,11 +1119,34 @@ dialog p {
   display: block;
   width: 100%;
   min-height: 50vh;
-  resize: vertical;
-  border: 1px solid #e0e7da;
-  border-radius: 8px;
+  border: 0;
+  outline: none;
   padding: 20px;
   font: inherit;
   line-height: 1.8;
   background: #fff;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+#management-screen[data-manager='contact'] {
+  background: #fff;
+}
+#management-screen[data-manager='contact'] .management-heading > div,
+#management-screen[data-manager='contact'] .management-heading nav {
+  display: none;
+}
+#management-screen[data-manager='contact'] #tab-contact {
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+#product-page-lock {
+  padding: 10px 16px;
+  background: #fff;
+  border-bottom: 1px solid #e0e7da;
+  font-size: 14px;
+}
+#product-page-lock button {
+  margin-left: 12px;
 }

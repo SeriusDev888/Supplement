@@ -17,8 +17,10 @@
   "devDependencies": {
     "drizzle-kit": "0.31.10",
     "esbuild": "^0.27.4",
+    "lucide-static": "^1.52.0",
     "playwright": "^1.63.0",
     "prettier": "^3.9.9",
+    "qrcode": "^1.5.4",
     "wrangler": "4.92.0"
   }
 }

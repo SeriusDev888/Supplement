@@ -118,6 +118,7 @@
   }
   function patch(values, scope = selected?.scope, id = selected?.id, page = route) {
     if (!id) return;
+    if (scope !== 'global' && SiteDefaults.isProductRoute(page)) return;
     if (
       values.image !== undefined &&
       id === selected?.id &&
@@ -192,6 +193,7 @@
     if (['products', 'brand', 'contact'].includes(name)) {
       if (manager && manager !== name) mediaCallback = null;
       manager = name;
+      managerScreen.dataset.manager = name;
       studioBody.hidden = true;
       managerScreen.hidden = false;
       document.body.classList.add('management-open');
@@ -321,6 +323,7 @@
   }
   $('style-scope').onchange = () => selected && populate(selected);
   function swapSections(first, second) {
+    if (SiteDefaults.isProductRoute(route)) return;
     const a = outlineItems.find((v) => v.id === first),
       b = outlineItems.find((v) => v.id === second);
     if (
@@ -440,6 +443,7 @@
     const m = event.data;
     if (m.type === 'ready') {
       route = m.route;
+      syncProductLock();
       location.hash = route;
       $('page-select').value = route;
       $('open-live').href = '/#' + route;
@@ -465,7 +469,11 @@
         list.append(b);
       }
     }
-    if (m.type === 'selected') populate(m.element);
+    if (
+      m.type === 'selected' &&
+      !(m.element.scope === 'page' && SiteDefaults.isProductRoute(m.route))
+    )
+      populate(m.element);
     if (m.type === 'inlineText') {
       patch({ text: m.text }, m.scope, m.id, m.route);
       if (selected?.id === m.id) $('text-value').value = m.text;
@@ -474,6 +482,7 @@
   for (const [value, label] of pages) $('page-select').add(new Option(label, value));
   function navigate(page) {
     route = page;
+    syncProductLock();
     location.hash = route;
     $('page-select').value = route;
     selected = null;
@@ -481,6 +490,15 @@
     $('element-fields').hidden = true;
     frame.src = '/?editor-preview=1#' + route;
     $('open-live').href = '/#' + route;
+  }
+  function syncProductLock() {
+    const locked = SiteDefaults.isProductRoute(route);
+    $('product-page-lock').hidden = !locked;
+    if (locked) {
+      selected = null;
+      $('no-selection').hidden = false;
+      $('element-fields').hidden = true;
+    }
   }
   $('page-select').onchange = () => navigate($('page-select').value);
   $('text-value').oninput = () => patch({ text: $('text-value').value });

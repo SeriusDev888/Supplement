@@ -2,31 +2,6 @@
   const api = window.EditorAPI,
     $ = (id) => document.getElementById(id),
     clone = structuredClone;
-  const names = {
-    leaf: 'ใบไม้',
-    flower: 'ดอกไม้',
-    shield: 'โล่',
-    heart: 'หัวใจ',
-    bolt: 'พลังงาน',
-    moon: 'พระจันทร์',
-    face: 'ผิวพรรณ',
-    sun: 'แสงแดด',
-    hand: 'มือ',
-    star: 'ดาว',
-    drop: 'หยดน้ำ',
-    sparkles: 'ประกาย',
-    check: 'เครื่องหมายถูก',
-    flask: 'งานวิจัย',
-    mountain: 'ภูเขา',
-    lotus: 'ดอกบัว',
-    award: 'คุณภาพ',
-    bed: 'การพักผ่อน',
-    globe: 'โลก',
-    mail: 'อีเมล',
-    chat: 'แชต',
-    pin: 'สถานที่',
-    arrow: 'ลูกศร',
-  };
   const icon = (name) =>
     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${SiteDefaults.icons[name]}"></path></svg>`;
   let productId = 'daily',
@@ -205,10 +180,6 @@
     $('product-ingredients').value = (p.ingredients || [])
       .map((v) => v[1] + ' | ' + v[2])
       .join('\n');
-    for (let i = 0; i < 3; i++) {
-      $('benefit-icon-' + i).value = p.benefits?.[i]?.[0] || 'leaf';
-      $('benefit-text-' + i).value = p.benefits?.[i]?.[1] || '';
-    }
     $('product-preview').src = p.image || '';
     $('product-preview').hidden = !p.image;
     const original = !p.image && SiteDefaults.products.some((v) => v.id === p.id);
@@ -287,18 +258,6 @@
       });
     updateProduct(productId, { ingredients: rows });
   };
-  for (let i = 0; i < 3; i++) {
-    for (const name of Object.keys(names))
-      $('benefit-icon-' + i).add(new Option(names[name], name));
-    for (const field of ['icon', 'text'])
-      $('benefit-' + field + '-' + i).onchange = () =>
-        updateProduct(productId, {
-          benefits: [0, 1, 2].map((n) => [
-            $('benefit-icon-' + n).value,
-            $('benefit-text-' + n).value,
-          ]),
-        });
-  }
   $('product-select').onchange = () => {
     productId = $('product-select').value;
     showProduct();

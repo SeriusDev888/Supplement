@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { validateDocument } from '../worker/index.js';
+import extraStickers from '../src/shared/sticker-library.json' with { type: 'json' };
 const context = { window: {} };
 vm.runInNewContext(
   readFileSync(new URL('../src/shared/site-config.js', import.meta.url), 'utf8'),
@@ -42,6 +43,14 @@ test('catalog, brand, stickers and effects validate without accepting unsafe or 
     const data = fixture();
     change(data);
     assert.throws(() => validateDocument(data));
+  }
+});
+test('all 100 additional stickers can be saved through the document API', () => {
+  assert.equal(Object.keys(extraStickers).length, 100);
+  for (const sticker of Object.keys(extraStickers)) {
+    const data = fixture();
+    data.global.nodes.header = { sticker };
+    assert.equal(validateDocument(data), data);
   }
 });
 test('product details accept optional legacy records and reject unsafe assets or invalid rows', () => {
