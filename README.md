@@ -1,76 +1,75 @@
-# CHASHITSU Supplement Website
+# supplement
 
-เว็บไซต์สินค้าและระบบแก้ไขเนื้อหา แยก source code ออกจากไฟล์ build
+เว็บไซต์หลัก CHASHITSU สำหรับผู้เข้าชม แยกจากระบบหลังบ้าน `supplement-admin-site`
 
-## โครงสร้างโปรเจกต์
+| โปรเจกต์ | ตำแหน่ง | Local URL |
+| --- | --- | --- |
+| เว็บหลัก | `C:\Godenray_Project\supplement` | http://127.0.0.1:4319/ |
+| Website Studio และ CMS API | `C:\Godenray_Project\supplement-admin-site` | http://127.0.0.1:4320/ |
 
-| โฟลเดอร์             | หน้าที่                                                    |
-| -------------------- | ---------------------------------------------------------- |
-| `src/templates/`     | HTML เว็บไซต์และ Website Studio                            |
-| `src/site/`          | หน้า Home, สินค้า, Story, Origins, Ingredients และ Contact |
-| `src/editor/`        | จัดการสินค้า แบรนด์ Contact เอฟเฟกต์ และฉบับร่าง           |
-| `src/shared/`        | ข้อมูลสินค้าเริ่มต้น ไอคอน และรายละเอียดสินค้า             |
-| `src/runtime/`       | นำข้อมูลที่บันทึกมาแสดงบนเว็บไซต์และตัวอย่างใน editor      |
-| `src/styles/editor/` | CSS ระบบจัดการ                                             |
-| `src/styles/site/`   | CSS หน้าร้าน                                               |
-| `worker/`            | API, authentication, validation และการบันทึกข้อมูล         |
-| `db/`, `drizzle/`    | schema และ migrations ของ D1                               |
-| `public/assets/`     | รูปภาพและเอกสารประกอบ                                      |
-| `scripts/`           | คำสั่ง build, dev และรายการไฟล์ frontend                   |
-| `tests/`             | ทดสอบ API, editor และหน้าสินค้า                            |
-| `tools/legacy/`      | สคริปต์สร้างภาพ/ปรับหน้าในอดีต ไม่ใช้ในการ build ปัจจุบัน  |
-| `dist/`              | ผลลัพธ์จาก build สร้างใหม่ได้ ไม่ต้องแก้โดยตรง             |
-
-## เริ่มใช้งาน
-
-ใช้ Node.js 22 หรือใหม่กว่า:
+ใช้ Node.js 24.x รันแต่ละโปรเจกต์ใน terminal แยกกัน
+บน PowerShell ที่ปิดการรัน `.ps1` ใช้ `npm.cmd` แทน `npm`
 
 ```sh
+cd C:\Godenray_Project\supplement
 npm ci
 npm run build
-npm run db:local
 npm run dev
 ```
 
-เปิดเว็บไซต์ที่ `http://127.0.0.1:4319/` และ editor ที่ `/editor.html#home`.
-หลังแก้ source รัน `npm run build` อีกครั้งเพื่อปรับไฟล์ที่ preview ใช้
+ต้องเปิด `supplement-admin-site` ด้วยเพื่ออ่านข้อมูลที่เผยแพร่และไฟล์อัปโหลด
+ตั้งค่า `CONTENT_ORIGIN` ใน `.env` หากเปลี่ยน URL หลังบ้าน (ค่า dev เริ่มต้น `http://127.0.0.1:4320`)
+หลังแก้ source ให้รัน `npm run build` อีกครั้ง
 
-Editor ต้องมี identity headers จาก Sites และ `EDITOR_OWNER_EMAIL` ที่ตรงกัน
-สคริปต์ dev ใช้เจ้าของทดสอบ `owner@example.test`; browser tests ส่ง headers สำหรับ local เท่านั้น
-อย่าเปิด dev server สู่ภายนอกหรือใช้ identity จำลองกับ production
+## โครงสร้าง
 
-## ส่วนที่แก้บ่อย
+- `src/site/`, `src/templates/index.html`, `src/styles/site/`: หน้าเว็บสำหรับผู้เข้าชม
+- `src/runtime/`: แสดงเนื้อหาที่เผยแพร่ สินค้า แบรนด์ และเอฟเฟกต์สำหรับผู้เข้าชมเท่านั้น
+- `src/shared/`: ข้อมูลเริ่มต้นและรูปแบบข้อมูลที่หน้าเว็บใช้
+- `public/assets/`: รูปภาพและไฟล์สาธารณะเดิม
+- `worker/index.js`: ให้บริการ assets และ proxy เฉพาะ `GET/HEAD /api/content` กับ `/media/*`
+- `scripts/build.mjs`, `scripts/dev.mjs`, `wrangler.json`: build และ dev ของเว็บหลัก
 
-- ชื่อ โลโก้ และ Contact: หน้าจัดการใน Website Studio
-- รูป ราคา รายละเอียด FAQ และ PDF: หน้าจัดการสินค้า
-- จัดการสินค้า: `src/editor/product-catalog.js` และ `product-manager.js`
-- หน้าสินค้า: `src/site/product-page.js`
-- Contact: `src/editor/contact-manager.js` และ `src/site/contact-page.js`
-- ตรวจข้อมูลก่อนบันทึก: `worker/validation.js`
-- อ่าน/เขียนฉบับร่าง: `worker/storage.js`; เส้นทาง API อยู่ใน `worker/index.js`
+เว็บหลักไม่มีหน้า `editor.html` หรือ API สำหรับแก้ไขข้อมูล ไม่มี dependency ต่อโฟลเดอร์ source ของหลังบ้าน
+ข้อมูลที่เผยแพร่และสื่ออัปโหลดอ่านผ่าน HTTP หรือ Worker service binding เท่านั้น
+หลังบ้านมีสำเนา `src/shared/` ของตัวเองสำหรับข้อมูลเริ่มต้นและการตรวจสอบ schema;
+หากแก้รูปแบบข้อมูลร่วมกัน ให้ปรับทั้งสองโปรเจกต์ให้ตรงกัน
 
-เนื้อหาที่แก้ไขจริงเก็บใน D1 และไฟล์อัปโหลดเก็บใน R2 ไม่อยู่ใน Git repository นี้
-ข้อมูลเริ่มต้นบางรายการอ้างอิงจากแบบที่ใช้พัฒนา และแก้ไขได้จากหน้าจัดการสินค้า
+โค้ด preview/editor และไฟล์สำรองของการแยกโปรเจกต์อยู่ใน `C:\Godenray_Project\supplement-admin-site` เท่านั้น
+เว็บหลักโหลด `content-runtime.js` ซึ่งอ่านข้อมูลที่เผยแพร่ผ่าน `/api/content` ไม่มีโหมดแก้ไขหรือรับข้อความสั่งแก้ DOM จาก iframe
 
-## Build และทดสอบ
+## ตรวจสอบ
 
 ```sh
-npm run format
+npm test
 npm run build
-npm run test:unit
+# เปิด dev server ก่อนทดสอบการแสดงผลใน browser
+npm run test:browser
 ```
 
-`scripts/frontend-files.json` จับคู่ source กับชื่อไฟล์ปลายทางเพื่อคง URL เดิม
-Backend bundle ด้วย esbuild; frontend โหลดสคริปต์ตามลำดับใน template
-Ingredients หลายรุ่นเป็นชั้นการปรับหน้าตามแบบเดิม ยังโหลดตามลำดับเพื่อรักษาหน้าปัจจุบัน
+Browser tests ใช้ Chromium ของ Playwright หรือกำหนด `CHROME_PATH` เป็น Chrome ที่ติดตั้งอยู่
 
-Browser tests ใช้ Playwright, Chrome และ local preview พอร์ต 4319
-รัน `npx playwright install chromium` ก่อนใช้ browser tests แล้วรันทีละไฟล์เพราะใช้ฐานข้อมูล local เดียวกัน
-หากใช้ Chrome ที่ติดตั้งเอง กำหนด environment `CHROME_PATH` เป็นพาธโปรแกรม
+## Hosting
 
-## เผยแพร่
+การแยกครั้งนี้ทำเฉพาะ local ไม่ได้เปลี่ยน deployment บน Sites หรือย้ายข้อมูล production
+เก็บ project ID ของเว็บหลักเดิมไว้ใน `.openai/hosting.json`
+เมื่อนำขึ้นระบบจริง ให้ตั้ง `CONTENT_ORIGIN` เป็น URL ที่ให้บริการ published content ได้
+หรือกำหนด `CONTENT_SERVICE` เป็น Worker service binding ไปยังหลังบ้าน
+ถ้าหลังบ้านเป็น private ให้ใช้ service binding ที่เข้าถึงได้จาก Worker แทน URL ที่ต้องล็อกอิน
+ไม่ต้องกำหนด D1/R2 ให้เว็บหลัก; ฐานข้อมูลและสื่อเป็นหน้าที่ของหลังบ้าน
+หลังบ้านที่ใช้ `STUDIO_DATABASE=supabase` ใช้ Supabase และ private Storage ของตัวเอง ไม่ต้องผูก D1/R2 บน Vercel
+# Vercel deployment
 
-โปรเจกต์ใช้ Sites, Cloudflare Worker, D1 และ R2
-`.openai/hosting.json` ระบุ Site เดิม ใช้ workflow ของ Sites เผยแพร่ผล build
-ตั้ง `EDITOR_OWNER_EMAIL` ผ่าน environment ของ hosting ห้าม commit secrets
-การ push GitHub เก็บ source code ส่วนเผยแพร่เว็บไซต์เป็นอีกขั้นตอนหนึ่ง
+ตั้ง Framework เป็น **Other**, Node.js **24.x**, Build Command `npm run build`, Output Directory `dist/vercel-public` โดยมี `vercel.json` ให้แล้ว
+เมื่อ import `https://github.com/SeriusDev888/Supplement` ให้ใช้ Root Directory `./` เพราะโค้ดหน้าบ้านอยู่ที่ root ของ repo อยู่แล้ว
+ตั้ง `CONTENT_ORIGIN` ตาม `.env.production.example` เป็น HTTPS URL ของ Supplement AdminSite
+เว็บใช้ Vercel Function อ่าน published content และสื่อจากหลังบ้าน ส่วนไฟล์เว็บเสิร์ฟจาก static output ไม่ต้องใช้ Supabase key บนหน้าบ้าน
+รัน `npm run test:vercel` เพื่อตรวจการเชื่อมต่อและการไม่ส่งต่อ cookie/credentials ไปหลังบ้าน
+
+```dotenv
+CONTENT_ORIGIN=https://YOUR_SUPPLEMENT_ADMIN.vercel.app
+```
+
+ใส่ค่าใน Vercel → Project Settings → Environment Variables → Production แล้ว redeploy
+AdminSite ต้องออนไลน์และให้เข้าถึง published content/media API ได้ ไม่ใช้ `localhost` หรือ `127.0.0.1` เป็นปลายทางบน Production
+หลังได้ URL หน้าบ้าน ให้ตั้ง `SITE_ORIGIN` ของ Supplement AdminSite เป็น URL หน้าบ้านนั้นแล้วรีสตาร์ท/redeploy หลังบ้าน

@@ -42,18 +42,6 @@
 [data-cms-effect='none'] .or-leaf {
   display: none !important;
 }
-.ve-editable [data-cms-effect]:not([data-cms-effect='none']) > .motion-atmosphere {
-  display: block !important;
-}
-.ve-editable [data-cms-effect] .motion-fleck {
-  animation: none !important;
-  top: calc(var(--x) * 0.5);
-  opacity: 0.7 !important;
-}
-.ve-editable svg[data-ve-id] {
-  pointer-events: auto !important;
-  cursor: crosshair !important;
-}
 .cms-price {
   font-size: 24px;
   font-weight: 600;

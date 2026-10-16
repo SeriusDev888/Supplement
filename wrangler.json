@@ -1,0 +1,11 @@
+{
+  "name": "supplement",
+  "main": "index.js",
+  "compatibility_date": "2026-05-15",
+  "assets": {
+    "directory": "../client",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "none"
+  }
+}

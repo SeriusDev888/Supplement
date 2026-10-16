@@ -22,7 +22,7 @@
   toggle.className = 'motion-toggle';
   toggle.type = 'button';
   document.body.append(toggle);
-  const disabled = () => paused || reduced.matches || root.classList.contains('ve-no-motion');
+  const disabled = () => paused || reduced.matches || root.dataset.motionPaused === 'true';
   function play(el, frames, opts = {}) {
     if (disabled() || !el.isConnected) return;
     const a = el.animate(frames, { duration: 750, easing: 'cubic-bezier(.16,1,.3,1)', ...opts });

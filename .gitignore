@@ -7,7 +7,7 @@ dist/client/
 dist/server/
 dist/.openai/
 .env*
+!.env.example
 
-editor-*.png
-product-details-*.png
-product-sample-*.png
+.vercel/
+!.env.production.example
