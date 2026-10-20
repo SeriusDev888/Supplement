@@ -58,12 +58,8 @@
       });
     }
     const order = e.target.closest('[data-pd-order]');
-    if (order) {
-      const p = SiteCMS.product(order.dataset.pdOrder),
-        url = safeUrl(p.buyUrl || '');
-      document.getElementById('dialog-content').innerHTML =
-        `<h2>${esc(name(p))}</h2>${p.price ? `<p>ราคาต่อชิ้น ${esc(p.price)}</p>` : ''}<p>แจ้งชื่อสินค้าและจำนวนกับทีมงานเพื่อยืนยันราคาและการจัดส่ง</p>${url ? `<div class="actions"><a class="btn" href="${esc(url)}" target="_blank" rel="noopener noreferrer">ไปที่ช่องทางสั่งซื้อ ${arrow()}</a></div>` : '<p>แบรนด์ยังไม่ได้ระบุช่องทางสั่งซื้อสำหรับสินค้านี้</p>'}`;
-      document.getElementById('info-dialog').showModal();
+    if (order && !order.disabled) {
+      location.hash = '#contact';
     }
   });
 })();
