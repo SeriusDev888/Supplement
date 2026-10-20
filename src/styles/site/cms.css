@@ -76,26 +76,6 @@
 .or-product[hidden] {
   display: none !important;
 }
-.contact-page {
-  background: white;
-  min-height: 70vh;
-  padding: 40px max(24px, 6vw);
-}
-.contact-back {
-  display: inline-block;
-  margin-bottom: 30px;
-}
-.contact-page h1 {
-  font-size: 42px;
-  margin-bottom: 30px;
-}
-.contact-content {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  font-size: 17px;
-  line-height: 1.8;
-  min-height: 35vh;
-}
 .partner-line-qr {
   display: inline-flex;
   flex-direction: column;

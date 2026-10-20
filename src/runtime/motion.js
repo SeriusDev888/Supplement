@@ -3,10 +3,6 @@
     main = document.querySelector('main');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)'),
     fine = matchMedia('(hover: hover) and (pointer: fine)');
-  let paused = false;
-  try {
-    paused = localStorage.getItem('chashitsu-motion-paused') === 'true';
-  } catch {}
   let active = false,
     frame = 0,
     scanQueued = false,
@@ -18,11 +14,7 @@
   progress.className = 'motion-progress';
   progress.setAttribute('aria-hidden', 'true');
   document.body.append(progress);
-  const toggle = document.createElement('button');
-  toggle.className = 'motion-toggle';
-  toggle.type = 'button';
-  document.body.append(toggle);
-  const disabled = () => paused || reduced.matches || root.dataset.motionPaused === 'true';
+  const disabled = () => reduced.matches || root.dataset.motionPaused === 'true';
   function play(el, frames, opts = {}) {
     if (disabled() || !el.isConnected) return;
     const a = el.animate(frames, { duration: 750, easing: 'cubic-bezier(.16,1,.3,1)', ...opts });
@@ -38,14 +30,6 @@
   function updatePreference() {
     active = !disabled();
     root.classList.toggle('motion-off', !active);
-    toggle.disabled = reduced.matches;
-    toggle.setAttribute('aria-pressed', String(paused || reduced.matches));
-    const label = reduced.matches
-      ? 'ลดการเคลื่อนไหวตามระบบ'
-      : paused
-        ? 'เปิดแอนิเมชัน'
-        : 'หยุดแอนิเมชัน';
-    toggle.innerHTML = `<svg viewBox="0 0 16 16" aria-hidden="true">${active ? '<path d="M3 2h3v12H3zm7 0h3v12h-3z"/>' : '<path d="M4 2l10 6-10 6z"/>'}</svg><span>${label}</span>`;
     if (!active) {
       for (const a of running) a.cancel();
       document.querySelectorAll('[data-motion-hover]').forEach((el) => {
@@ -57,13 +41,6 @@
     }
     schedule();
   }
-  toggle.addEventListener('click', () => {
-    paused = !paused;
-    try {
-      localStorage.setItem('chashitsu-motion-paused', String(paused));
-    } catch {}
-    updatePreference();
-  });
   reduced.addEventListener('change', updatePreference);
   const observer = new IntersectionObserver(
     (entries) => {
@@ -191,18 +168,18 @@
       )
       .forEach(atmosphere);
     const selectors =
-      '.ig4-feature-copy,.ig4-feature-art,.ig4-small-card,.ig4-process-copy,.ig4-other-heading,.ig4-banner>div,.ig3-key-head,.ig3-card,.ig3-natural,.ig3-other-head,.ig3-process-copy,.ig3-banner>div,.ig-heading,.ig-card,.ig-quality-copy,.or-copy,.or-picture,.or-product-art,.or-product-copy,.or-card,.st-section-heading,.st-value,.st-origins-copy,.st-map-link,.st-closing-copy,.rh-beginning-copy,.rh-circle,.rh-heading,.rh-region,.hp-card,.rh-finder-copy,.rh-goal,.rh-partner>div:not(.motion-atmosphere),.rh-landscape>div:not(.motion-atmosphere),.chapter,.origin-heading,.origin-detail,.process,.product-card,.product-section>h2,.product-section>p,.ingredient,.ritual>div,.wellness-option,.wellness-result,.value,.partner-type,.contact-panel';
+      '.ig4-feature-copy,.ig4-feature-art,.ig4-small-card,.ig4-process-copy,.ig4-other-heading,.ig4-banner>div,.ig3-key-head,.ig3-card,.ig3-natural,.ig3-other-head,.ig3-process-copy,.ig3-banner>div,.ig-heading,.ig-card,.ig-quality-copy,.or-copy,.or-picture,.or-product-art,.or-product-copy,.or-card,.st-section-heading,.st-value,.st-origins-copy,.st-map-link,.st-closing-copy,.rh-beginning-copy,.rh-circle,.rh-heading,.rh-region,.hp-card,.rh-finder-copy,.rh-goal,.rh-partner>div:not(.motion-atmosphere),.rh-landscape>div:not(.motion-atmosphere),.chapter,.origin-heading,.origin-detail,.process,.product-card,.product-section>h2,.product-section>p,.ingredient,.ritual>div,.wellness-option,.wellness-result,.value,.partner-type,.contact-panel,.ct-intro-inner,.ct-line-card,.ct-form-card,.ct-info-item,.ct-map-card';
     main
       .querySelectorAll(selectors)
       .forEach((el) => watch(el, true, [...el.parentElement.children].indexOf(el)));
-    main
-      .querySelectorAll(
-        '.hp-card,.rh-region,.rh-goal,.product-card,.wellness-option,.ingredient,.value',
-      )
-      .forEach((el) => {
-        el.classList.add('motion-card');
-        el.dataset.motionHover = 'true';
-      });
+   main
+    .querySelectorAll(
+      '.hp-card,.rh-region,.rh-goal,.product-card,.wellness-option,.ingredient,.value',
+    )
+    .forEach((el) => {
+      el.classList.add('motion-card');
+      el.dataset.motionHover = 'true';
+    });
     main.querySelectorAll('.rh-circle,.rh-seal,.rh-wave').forEach((el) => watch(el));
     main
       .querySelectorAll('.or-process,.ig-quality,.ig3-process,.ig4-process')

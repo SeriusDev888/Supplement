@@ -144,7 +144,6 @@
         reviewUrl: '',
         askUrl: '',
         orderLabel: 'Order via LINE OA',
-        askLabel: 'Ask on LINE',
         trust: [
           { icon: 'shield', title: 'Product information', text: 'From the brand' },
           { icon: 'chat', title: 'Ordering enquiries', text: 'Contact our team' },

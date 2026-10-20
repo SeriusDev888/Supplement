@@ -25,5 +25,6 @@
   "story-page.css": "src/styles/site/story-page.css",
   "story-page.js": "src/site/story-page.js",
   "styles.css": "src/styles/site/styles.css",
-  "wide-screen.css": "src/styles/site/wide-screen.css"
+  "wide-screen.css": "src/styles/site/wide-screen.css",
+  "contact-page.css": "src/styles/site/contact-page.css"
 }

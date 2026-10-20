@@ -29,7 +29,7 @@
   ];
   function indexTree(root, prefix, keep = false) {
     if (!root) return;
-    if (prefix === 'main' && SiteDefaults.isProductRoute(route())) return;
+    if (prefix === 'main' && (route() === 'contact' || SiteDefaults.isProductRoute(route()))) return;
     function walk(el, id) {
       if (ignored(el)) return;
       if (el.dataset.productRoot) id = 'main/product-v2-' + el.dataset.productRoot;
@@ -248,7 +248,7 @@
     applyTheme();
     SiteCMS.productImages();
     applyGroup(documentState.global);
-    if (!SiteDefaults.isProductRoute(route())) applyGroup(documentState.pages?.[route()]);
+    if (route() !== 'contact' && !SiteDefaults.isProductRoute(route())) applyGroup(documentState.pages?.[route()]);
     SiteCMS.applyBrand();
     const header = document.querySelector('.header'),
       needsHeaderSpace =
